@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List City</title>
+</head>
+<body>
+<center>
+<!--<hr>-->
+<!--<a href="/provinces">Back to list province</a><br>-->
+<!--<hr>-->
+<!--<a href="/customers">Back to list Customer</a>-->
+<!--<hr>-->
+<div th:if="${message}">
+    <p th:text="${message}" style="color:green;"></p>
+</div>
+
+<h1>Cities</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name City</th>
+        <th>Name Nation</th>
+        <th>Area</th>
+        <th>Quantity</th>
+        <th>GPA</th>
+        <th>Description</th>
+        <th>Action</th>
+        <th>Action</th>
+    </tr>
+    <th:block th:each="city : ${list}">
+        <tr>
+            <td th:text="${city.id}"></td>
+            <td th:text="${city.name}"></td>
+            <td><a th:href="@{/view-city/__${city.id}__}" th:text="${city.nation.name}"></a></td>
+            <td th:text="${city.area}"></td>
+            <td th:text="${city.quantity}"></td>
+            <td th:text="${city.GPA}"></td>
+            <td th:text="${city.description}"></td>
+            <td><a th:href="@{/edit-city/__${city.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-city/__${city.id}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+<a href="/create-city">Create new City</a><br>
+</center>
+</body>
+</html>
